@@ -17,7 +17,7 @@ import java.util.Objects;
 public class AddProductActivity extends AppCompatActivity {
 
     TextInputLayout ti_name, ti_quantity, ti_price;
-    Button btn_addProduct;
+    Button btn_addProduct, btn_clear;
     String product_name, product_quantity;
     int product_price;
     User user;
@@ -36,10 +36,18 @@ public class AddProductActivity extends AppCompatActivity {
         ti_quantity = findViewById(R.id.ti_ProductQuantity);
         ti_price = findViewById(R.id.ti_ProductPrice);
         btn_addProduct = findViewById(R.id.btn_addProduct);
+        btn_clear = findViewById(R.id.btn_clear);
     }
 
     private void initListeners() {
-        btn_addProduct.setOnClickListener(view2 -> validateInputs());
+        btn_addProduct.setOnClickListener(view1 -> validateInputs());
+        btn_clear.setOnClickListener(view2 -> clearInpust());
+    }
+
+    private void clearInpust() {
+        Objects.requireNonNull(ti_name.getEditText()).setText("");
+        Objects.requireNonNull(ti_quantity.getEditText()).setText("");
+        Objects.requireNonNull(ti_price.getEditText()).setText("");
     }
 
     private void getUserObject() {
@@ -60,7 +68,16 @@ public class AddProductActivity extends AppCompatActivity {
             ti_quantity.setHelperText(getResources().getString(R.string.enter_the_product_quantity));
         else {
             ti_quantity.setHelperText("");
-            product_price = calcaularPrecio(Integer.parseInt(product_quantity));
+            PriceCalculator priceCalculator = new PriceCalculator(Integer.parseInt(product_quantity));
+            priceCalculator.start();
+
+            try {
+                priceCalculator.join();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
+            product_price = priceCalculator.getResult();
             Objects.requireNonNull(ti_price.getEditText()).setText(String.valueOf(product_price));
         }
 
@@ -71,16 +88,10 @@ public class AddProductActivity extends AppCompatActivity {
         }
     }
 
-    private int calcaularPrecio(int a) {
-        if(a > 1)
-            return a * calcaularPrecio(a-1);
-
-        return 1;
-    }
-
     private void insertToDb() {
         DbProducts dbProducts = new DbProducts(this);
-        dbProducts.addProduct(user.getId(), product_name, Integer.parseInt(product_quantity), product_price);
+        dbProducts.addProduct(user.getId(), product_name, Integer.parseInt(product_quantity), String.valueOf(product_price));
+        dbProducts.close();
     }
 
     private void hideKeyboard() {

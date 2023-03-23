@@ -17,16 +17,16 @@ public class DbProducts extends DbHelper {
         this.context = context;
     }
 
-    public void addProduct(int id, String name, int quantity, long price) {
+    public void addProduct(int id, String name, int quantity, String price) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
-        values.put(COLUMN_ID, id);
+        values.put(COLUMN_ID_PRODUCT, id);
         values.put(COLUMN_NAME, name);
         values.put(COLUMN_QUANTITY, quantity);
         values.put(COLUMN_PRICE, price);
 
         try {
-            db.insert(DATABASE_TABLE_NAME, null, values);
+            db.insert(DATABASE_TABLE_PRODUCTS, null, values);
         } catch (SQLException e) {
             Log.e("INFO", "Error al insertar datos en la base de datos: " + e.getMessage());
             Toast.makeText(context, "Error al registrar el producto", Toast.LENGTH_SHORT).show();

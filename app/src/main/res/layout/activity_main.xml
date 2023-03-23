@@ -5,6 +5,7 @@
     android:id="@+id/layout_login"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/gradient_main"
     android:fillViewport="true">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -22,8 +23,8 @@
             android:gravity="center"
             android:text="@string/login"
             android:textColor="@color/DarkBlue"
-            android:textSize="24sp"
-            android:textStyle="bold"
+            android:textSize="32sp"
+            android:textStyle="bold|italic"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -43,6 +44,9 @@
             app:boxCornerRadiusBottomStart="10dp"
             app:boxCornerRadiusTopEnd="10dp"
             app:boxCornerRadiusTopStart="10dp"
+            app:boxStrokeWidth="1dp"
+            app:boxStrokeWidthFocused="2dp"
+            app:errorEnabled="true"
             app:helperTextEnabled="true"
             app:helperTextTextColor="@color/Red"
             app:layout_constraintEnd_toEndOf="parent"
@@ -73,7 +77,10 @@
             app:boxCornerRadiusBottomStart="10dp"
             app:boxCornerRadiusTopEnd="10dp"
             app:boxCornerRadiusTopStart="10dp"
+            app:boxStrokeWidth="1dp"
+            app:boxStrokeWidthFocused="2dp"
             app:endIconTint="@color/black"
+            app:errorEnabled="true"
             app:helperTextEnabled="true"
             app:helperTextTextColor="@color/Red"
             app:layout_constraintEnd_toEndOf="parent"
@@ -106,7 +113,7 @@
             android:text="@string/ingresar"
             android:textSize="17sp"
             android:textStyle="italic"
-            app:cornerRadius="18dip"
+            app:cornerRadius="10dip"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/ti_pass" />
@@ -118,6 +125,7 @@
             android:layout_marginStart="36dp"
             android:layout_marginTop="44dp"
             android:layout_marginEnd="36dp"
+            android:backgroundTint="@color/LightGrey"
             android:gravity="center"
             android:paddingLeft="25dp"
             android:paddingTop="15dp"
@@ -126,7 +134,7 @@
             android:text="@string/registrar_usuario"
             android:textSize="17sp"
             android:textStyle="italic"
-            app:cornerRadius="18dip"
+            app:cornerRadius="10dip"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/btn_login" />

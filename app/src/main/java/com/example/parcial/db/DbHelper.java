@@ -9,10 +9,11 @@ import androidx.annotation.Nullable;
 public class DbHelper extends SQLiteOpenHelper {
 
     private static final String DATABASE_NAME = "Productos.db";
-    private static final int DATABASE_VERSION = 1;
-    public static final String DATABASE_TABLE_NAME = "Productos";
-    public static final String DATABASE_TABLE_NAME2 = "Productos";
+    private static final int DATABASE_VERSION = 15;
+    public static final String DATABASE_TABLE_PRODUCTS = "Productos";
+    public static final String DATABASE_TABLE_USERS = "Usuarios";
     public static final String COLUMN_ID = "id";
+    public static final String COLUMN_ID_PRODUCT = "id_product";
     public static final String COLUMN_NAME = "product_name";
     public static final String COLUMN_QUANTITY = "prodcut_quantity";
     public static final String COLUMN_PRICE = "prodcut_price";
@@ -26,21 +27,23 @@ public class DbHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("CREATE TABLE " + DATABASE_TABLE_NAME + "(" +
-                COLUMN_ID + " INTEGER PRIMARY KEY," +
+        db.execSQL("CREATE TABLE " + DATABASE_TABLE_PRODUCTS + "(" +
+                COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                COLUMN_ID_PRODUCT + " INTEGER," +
                 COLUMN_NAME + " TEXT," +
                 COLUMN_QUANTITY + " INTEGER," +
-                COLUMN_PRICE + " INTEGER)");
+                COLUMN_PRICE + " TEXT)");
 
-        db.execSQL("CREATE TABLE " + DATABASE_TABLE_NAME2 + "(" +
+        db.execSQL("CREATE TABLE " + DATABASE_TABLE_USERS + "(" +
                 COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
-                COLUMN_USER + " TEXT," +
+                COLUMN_USER + " TEXT UNIQUE," +
                 COLUMN_PASS + " INTEGER)");
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int i, int i1) {
-        db.execSQL("DROP TABLE IF EXISTS " + DATABASE_TABLE_NAME);
+        db.execSQL("DROP TABLE IF EXISTS " + DATABASE_TABLE_PRODUCTS);
+        db.execSQL("DROP TABLE IF EXISTS " + DATABASE_TABLE_USERS);
         onCreate(db);
     }
 }
