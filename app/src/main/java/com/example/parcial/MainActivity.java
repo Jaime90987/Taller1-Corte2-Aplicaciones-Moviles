@@ -18,7 +18,8 @@ public class MainActivity extends AppCompatActivity {
     TextInputLayout ti_user, ti_pass;
     String username, password;
     Button btn_login, btn_signin;
-    int id;
+    DbUsers dbUsers;
+    long id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void validateLogin() {
         if (!username.isEmpty() && !password.isEmpty()) {
-            DbUsers dbUsers = new DbUsers(this);
+            dbUsers = new DbUsers(this);
 
             if (dbUsers.validateUsername(username)) {
                 id = dbUsers.getId(username, password);
@@ -92,7 +93,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void validateSignIn() {
         if (!username.isEmpty() && !password.isEmpty()) {
-            DbUsers dbUsers = new DbUsers(this);
+            dbUsers = new DbUsers(this);
             if (!dbUsers.validateUsername(username)) {
                 insertToDb();
                 alert(getResources().getString(R.string.user_registered));
@@ -104,7 +105,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void insertToDb() {
-        DbUsers dbUsers = new DbUsers(this);
+        dbUsers = new DbUsers(this);
         dbUsers.addUser(username, password);
         dbUsers.close();
     }

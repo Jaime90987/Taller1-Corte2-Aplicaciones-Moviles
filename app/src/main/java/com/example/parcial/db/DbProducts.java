@@ -17,7 +17,7 @@ public class DbProducts extends DbHelper {
         this.context = context;
     }
 
-    public void addProduct(int id, String name, int quantity, String price) {
+    public void addProduct(long id, String name, int quantity, String price) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(COLUMN_ID_PRODUCT, id);

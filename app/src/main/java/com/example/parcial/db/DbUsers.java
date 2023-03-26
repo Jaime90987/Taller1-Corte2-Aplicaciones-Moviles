@@ -45,9 +45,9 @@ public class DbUsers extends DbHelper {
     public int getId(String username, String password) {
         db = this.getReadableDatabase();
 
-        String[] columns = { COLUMN_ID };
+        String[] columns = {COLUMN_ID};
         String selection = "username = ? AND password = ?";
-        String[] selectionArgs = { username, password };
+        String[] selectionArgs = {username, password};
 
         Cursor cursor = db.query(DATABASE_TABLE_USERS, columns, selection, selectionArgs, null, null, null);
 

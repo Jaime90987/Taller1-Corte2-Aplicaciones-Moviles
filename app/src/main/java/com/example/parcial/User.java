@@ -5,9 +5,9 @@ import java.io.Serializable;
 public class User implements Serializable {
     private final String username;
     private final String password;
-    private final int id;
+    private final long id;
 
-    public User(int id, String username, String password) {
+    public User(long id, String username, String password) {
         this.id = id;
         this.username = username;
         this.password = password;
@@ -18,7 +18,7 @@ public class User implements Serializable {
         return username;
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
