@@ -6,6 +6,8 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
+import java.math.BigInteger;
+
 @RunWith(JUnit4.class)
 public class PriceCalculatorTest extends TestCase {
 
@@ -20,42 +22,42 @@ public class PriceCalculatorTest extends TestCase {
     public void testCalculateWhenTheValueIs0() throws InterruptedException {
         priceCalculator1.start();
         priceCalculator1.join();
-        assertEquals(1, priceCalculator1.getResult());
+        assertEquals(BigInteger.ONE, priceCalculator1.getResult());
     }
 
     @Test
     public void testCalculateWhenTheValueIs1() throws InterruptedException {
         priceCalculator2.start();
         priceCalculator2.join();
-        assertEquals(1, priceCalculator2.getResult());
+        assertEquals(BigInteger.ONE, priceCalculator2.getResult());
     }
 
     @Test
     public void testCalculateWhenTheValueIs5() throws InterruptedException {
         priceCalculator3.start();
         priceCalculator3.join();
-        assertEquals(120, priceCalculator3.getResult());
+        assertEquals(BigInteger.valueOf(120), priceCalculator3.getResult());
     }
 
     @Test
     public void testCalculateWhenTheValueIs10() throws InterruptedException {
         priceCalculator4.start();
         priceCalculator4.join();
-        assertEquals(3628800, priceCalculator4.getResult());
+        assertEquals(BigInteger.valueOf(3628800), priceCalculator4.getResult());
     }
 
     @Test
     public void testCalculateWhenTheValueIs15() throws InterruptedException {
         priceCalculator5.start();
         priceCalculator5.join();
-        assertEquals(1307674368000L, priceCalculator5.getResult());
+        assertEquals(BigInteger.valueOf(1307674368000L), priceCalculator5.getResult());
     }
 
     @Test
     public void testCalculateWhenTheValueIs20() throws InterruptedException {
         priceCalculator6.start();
         priceCalculator6.join();
-        assertEquals(2432902008176640000L, priceCalculator6.getResult());
+        assertEquals(BigInteger.valueOf(2432902008176640000L), priceCalculator6.getResult());
     }
 
 }

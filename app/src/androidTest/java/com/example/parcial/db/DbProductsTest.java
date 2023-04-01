@@ -27,8 +27,6 @@ import java.util.List;
 public class DbProductsTest extends TestCase {
     DbProducts dbProducts;
     SQLiteDatabase db;
-    List<String> listProductNames;
-    List<Integer> listProductId;
 
     @Before
     public void onBefore() {
@@ -48,7 +46,7 @@ public class DbProductsTest extends TestCase {
     @Test
     public void testAddProductId() {
         db = dbProducts.getReadableDatabase();
-        listProductId = new ArrayList<>();
+        List<Integer> listProductId = new ArrayList<>();
         Cursor cursor = db.rawQuery(" SELECT " + COLUMN_ID_PRODUCT + " FROM " + DATABASE_TABLE_PRODUCTS, null);
 
         if (cursor.moveToFirst()) {
@@ -71,7 +69,7 @@ public class DbProductsTest extends TestCase {
     @Test
     public void testAddProductNames() {
         db = dbProducts.getReadableDatabase();
-        listProductNames = new ArrayList<>();
+        List<String> listProductNames = new ArrayList<>();
         Cursor cursor = db.rawQuery(" SELECT " + COLUMN_NAME + " FROM " + DATABASE_TABLE_PRODUCTS, null);
 
         if (cursor.moveToFirst()) {

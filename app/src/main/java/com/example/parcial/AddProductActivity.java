@@ -12,6 +12,7 @@ import android.widget.Button;
 import com.example.parcial.db.DbProducts;
 import com.google.android.material.textfield.TextInputLayout;
 
+import java.math.BigInteger;
 import java.util.Objects;
 
 public class AddProductActivity extends AppCompatActivity {
@@ -19,8 +20,8 @@ public class AddProductActivity extends AppCompatActivity {
     TextInputLayout ti_name, ti_quantity, ti_price;
     Button btn_addProduct, btn_clear;
     String product_name, product_quantity;
-    int product_price;
     User user;
+    BigInteger product_price;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,7 +89,7 @@ public class AddProductActivity extends AppCompatActivity {
         }
     }
 
-    private void insertToDb() {
+    public void insertToDb() {
         DbProducts dbProducts = new DbProducts(this);
         dbProducts.addProduct(user.getId(), product_name, Integer.parseInt(product_quantity), String.valueOf(product_price));
         dbProducts.close();

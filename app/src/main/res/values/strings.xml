@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Parcial</string>
+    <string name="app_name">Parcial-Tests</string>
     <string name="add_new_product">Añadir un nuevo producto</string>
     <string name="product_name">Nombre del producto</string>
     <string name="quantity">Cantidad</string>
@@ -41,7 +41,7 @@
     <string name="enter_the_username">Introduce el nombre de usuario</string>
     <string name="enter_the_password">Introduce la contraseña</string>
     <string name="wrong_password">"Contraseña incorrecta"</string>
-    <string name="wrong_username">"El usario no está registrado"</string>
+    <string name="wrong_username">"El usuario no está registrado"</string>
     <string name="user_registered">Usuario registrado correctamente</string>
     <string name="user_already_exists">El usuario ya se encuentra registrado</string>
 </resources>

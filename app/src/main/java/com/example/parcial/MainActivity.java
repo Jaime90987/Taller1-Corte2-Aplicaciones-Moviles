@@ -17,7 +17,7 @@ public class MainActivity extends AppCompatActivity {
 
     TextInputLayout ti_user, ti_pass;
     String username, password;
-    Button btn_login, btn_signin;
+    Button btn_login, btn_signIn;
     DbUsers dbUsers;
     long id;
 
@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
         ti_user = findViewById(R.id.ti_user);
         ti_pass = findViewById(R.id.ti_pass);
         btn_login = findViewById(R.id.btn_login);
-        btn_signin = findViewById(R.id.btn_signin);
+        btn_signIn = findViewById(R.id.btn_signin);
     }
 
     private void initListeners() {
@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
             validateLogin();
         });
 
-        btn_signin.setOnClickListener(view2 -> {
+        btn_signIn.setOnClickListener(view2 -> {
             validateInputs();
             validateSignIn();
         });
